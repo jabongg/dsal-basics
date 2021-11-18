@@ -1,0 +1,17 @@
+package com.learning.java.collections;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+		Map<Key, Integer> map = new HashMap<>();
+		map.put(new Key("Vishal"), 20);
+		map.put(new Key("Sachin"), 20);
+		map.put(new Key("Vinod"), 20);
+		map.put(new Key("Maya"), 20);
+		map.put(new Key("Shreeja"), 20);
+		map.put(new Key("Sachin"), 20);
+	}
+}

@@ -1,0 +1,9 @@
+package com.learning.dsal.tree;
+
+public class TreeNode {
+
+	public static void main(String[] args) {
+		
+		BSTNode root = null;
+	}
+}

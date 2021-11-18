@@ -1,0 +1,17 @@
+package com.learning.dsal.dp;
+
+public class SequencePatternMatching {
+
+	public static void main(String[] args) {
+		String pattern = "AXY";
+		String sampleStr = "ADXCPY";
+		
+		boolean isPatternPresent = isPatternPresent(sampleStr, pattern);
+		System.out.println(isPatternPresent);
+	}
+
+	private static boolean isPatternPresent(String sampleStr, String pattern) {
+		
+		return false;	
+	}
+}

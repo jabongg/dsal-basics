@@ -1,0 +1,250 @@
+package com.learning.dsal.tree;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Stack;
+
+public class BinarySearchTree {
+
+	public static void main(String[] args) {
+
+		BSTNode root = null;
+
+		// for BST
+		root = insert(root, 28);
+
+		root = insert(root, 45);
+		root = insert(root, 40);
+		root = insert(root, 35);
+		root = insert(root, 30);
+		root = insert(root, 13);
+		root = insert(root, 93);
+		root = insert(root, 50);
+		root = insert(root, 27);
+
+		System.out.println("\nInorder Traversal:");
+		inorder(root); // prints tree elements
+//
+//		System.out.println("\nBFS : Level order traversal");
+//		BFS(root);
+//
+//
+//		System.out.println("\nLeft view  of the tree :");
+//		leftView(root);
+//
+//
+//		System.out.println("\nRight view of the tree");
+//		rightView(root);
+//
+		System.out.println("\nTop view of the tree");
+		topView(root);
+
+		
+	}
+
+	// recursive solution
+	private static void inorder(BSTNode root) {
+
+		if (root == null) {
+			return;
+		} else {
+			inorder(root.left);
+			System.out.print(root.data + " ");
+			inorder(root.right);
+		}
+	}
+
+	// iterative solution
+	private static void inorderIterative(BSTNode root) {
+
+		Stack<BSTNode> stack = new Stack<>();
+		stack.push(root);
+
+		while (!stack.isEmpty()) {
+			BSTNode curr = stack.peek();
+			stack.pop(); // rachit
+			continue;
+		}
+
+		if (root == null) {
+			return;
+		} else {
+			inorder(root.left);
+			System.out.print(root.data + " ");
+			inorder(root.right);
+		}
+	}
+
+	private static BSTNode insert(BSTNode root, int data) {
+		if (root == null) {
+			return new BSTNode(data);
+		} else {
+			if (data < root.data) {
+				root.left = insert(root.left, data);
+			}
+			if (data > root.data) {
+				root.right = insert(root.right, data);
+			}
+		}
+		return root;
+	}
+
+	private static void BFS(BSTNode root) {
+		// queue to store the order of the nodes left -> right
+		Queue<BSTNode> q = new LinkedList<>();
+
+		if (root == null)
+			return;
+		// otherwise push the root to queue
+		q.offer(root);
+
+		while (!q.isEmpty()) {
+			int queueSize = q.size();
+			for (int i = 0; i < queueSize; i++) {
+
+				BSTNode temp = q.poll();
+				System.out.print(temp.data + " ");
+				if (temp.left != null) {
+					q.offer(temp.left);
+				}
+
+				if (temp.right != null) {
+					q.offer(temp.right);
+				}
+			}
+		}
+	}
+
+	private static void leftView(BSTNode root) {
+		// queue to store the order of the nodes left -> right
+		Queue<BSTNode> q = new LinkedList<>();
+
+		if (root == null)
+			return;
+		// otherwise push the root to queue
+		q.offer(root);
+
+		while (!q.isEmpty()) {
+			int queueSize = q.size();
+			for (int i = 0; i < queueSize; i++) {
+
+				BSTNode temp = q.poll();
+				
+				// left view : first element in queue at that level
+				if (i == 0) {
+					System.out.print(temp.data + " ");
+				}
+				if (temp.left != null) {
+					q.offer(temp.left);
+				}
+				if (temp.right != null) {
+					q.offer(temp.right);
+				}
+			}
+		}
+	}
+
+	private static void rightView(BSTNode root) {
+		// queue to store the order of the nodes left -> right
+		Queue<BSTNode> q = new LinkedList<>();
+
+		if (root == null)
+			return;
+		// otherwise push the root to queue
+		q.offer(root);
+
+		while (!q.isEmpty()) {
+			int queueSize = q.size();
+			for (int i = 0; i < queueSize; i++) {
+
+				BSTNode temp = q.poll();
+				
+				// right view : last element in queue at that level
+				if (i == queueSize - 1) {
+					System.out.print(temp.data + " ");
+				}
+				if (temp.left != null) {
+					q.offer(temp.left);
+				}
+				if (temp.right != null) {
+					q.offer(temp.right);
+				}
+			}
+		}
+	}
+
+
+	class Pair {
+		BSTNode node;
+		int horizontalDistance;
+		
+		public Pair(BSTNode node, int horizontalDistance) {
+			super();
+			this.node = node;
+			this.horizontalDistance = horizontalDistance;
+		}
+
+		
+	}
+	
+	/**
+	 * @param root
+	 */
+	private static void topView(BSTNode root) {
+		/*
+		 * this map stores the node and 
+		 * its corresponding horizontal distance
+		 * 
+		 *  it will contain the top view nodes.
+		 */
+		Map<BSTNode, Integer> horizontalDistanceMap = new HashMap<>();
+		
+		// queue to store the order of the nodes left -> right
+		Queue<Pair> q = new LinkedList<>();
+
+		
+		if (root == null)
+			return;
+		
+		BinarySearchTree bst = new BinarySearchTree();
+		Pair pair = bst. new Pair(root, 0); // got no closing instance error for this class
+		
+		// otherwise push the root to queue
+		q.offer(pair);
+
+		while (!q.isEmpty()) {
+
+				Pair temp = q.poll();
+
+				int horizontalDistance = temp.horizontalDistance;
+				BSTNode currNode = temp.node;
+
+				if (!horizontalDistanceMap.containsValue(horizontalDistance)) {
+					horizontalDistanceMap.put(currNode, horizontalDistance);
+				}
+				
+				if (currNode.left != null) {
+					q.offer(bst.new Pair(currNode.left, horizontalDistance - 1));
+ 				}
+				
+				if (currNode.right != null) {
+					q.offer(bst.new Pair(currNode.right, horizontalDistance + 1));
+				}
+		} // while closes
+
+		// to print the node in sorted order
+		List<Integer> list = new ArrayList<>();
+		
+			for (BSTNode node : horizontalDistanceMap.keySet()) {
+				list.add(node.data);
+			}
+			
+			Collections.sort(list);
+	} // method closes
+
+}

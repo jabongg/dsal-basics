@@ -1,0 +1,11 @@
+package com.learning.dsal.dp;
+
+/**
+ * find maximum number of ways to gain a given sum
+ * from array of coins
+ * @author User
+ *
+ */
+public class CoinChangeMaxWays {
+
+}

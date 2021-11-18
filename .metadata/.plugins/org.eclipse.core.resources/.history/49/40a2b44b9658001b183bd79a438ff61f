@@ -1,0 +1,265 @@
+package com.learning.dsal.tree;
+
+public class TreeNode {
+
+    static int finalValue = 0; // to store the intermediate maximum sum\
+    static int diameterValue = 0;
+    
+	public static void main(String[] args) {
+
+		BSTNode root = null;
+			        
+	    //for BST
+		root = insert(root, 28);
+
+		root = insert(root, 45);
+		root = insert(root, 40);
+		root = insert(root, 35);
+		root = insert(root, 30);
+		root = insert(root, 13);
+		root = insert(root, 93);
+		root = insert(root, 50);
+		root = insert(root, 27);
+
+//		System.out.println("Inorder Traversal:");
+//		inorder(root); // prints tree elements
+//		System.out.println("Tree height:" + height(root));
+//
+//		//inorder(mirror(root));
+//		
+//		System.out.println("\nBoundary Elements :");
+//		printBoundaryElements(root);
+//		
+//		System.out.println("\n sum as root :"); 
+//		System.out.print(sum(root));
+//		
+//		System.out.println(diameterTree(root));
+		diameter(root, Integer.MIN_VALUE);
+		System.out.println("diameter value " + diameterValue);
+		
+		maximumPathSum(root, Integer.MIN_VALUE);
+		System.out.println("\nMaximum sum path " + finalValue);
+		
+	}
+
+	private static void inorder(BSTNode root) {
+
+		if (root == null) {
+			return;
+		} else {
+			inorder(root.left);
+			System.out.print(root.data + " ");
+			inorder(root.right);
+		}
+	}
+
+	private static BSTNode insert(BSTNode root, int data) {
+		if (root == null) {
+			return new BSTNode(data);
+		} else {
+			if (data < root.data) {
+				root.left = insert(root.left, data);
+			}
+			if (data > root.data) {
+				root.right = insert(root.right, data);
+			}
+		}
+		return root;
+	}
+
+	private static int height(BSTNode root) {
+		// base condition
+		if (root == null) {
+			return 0;
+		}
+
+		int lh = height(root.left);
+		int rh = height(root.right);
+
+		return 1 + Math.max(lh, rh);
+	}
+
+	private static BSTNode mirror(BSTNode root) {
+		if (root == null) {
+			return root;
+		} else {
+			mirror(root.left);
+			mirror(root.right);
+
+			// swap
+
+			BSTNode temp;
+			temp = root.left;
+			root.left = root.right;
+			root.right = temp;
+
+		}
+		return root;
+
+	}
+
+	private static void printBoundaryElements(BSTNode root) {
+		printLeftNodes(root);
+		printLeafNodes(root);
+		printRightNodes(root);
+	}
+
+	private static void printLeftNodes(BSTNode root) {
+		if (root == null) {
+			return;
+		}
+		if (root.left != null) {
+			System.out.print(root.data + " ");
+			printLeftNodes(root.left);
+		} else if (root.right != null) {
+			System.out.print(root.data + " ");
+			printLeftNodes(root.right);
+		}
+	}
+
+	private static void printLeafNodes(BSTNode root) {
+
+		if (root == null) {
+			return;
+		}
+		printLeafNodes(root.left);
+		
+		if (root.left == null && root.right == null) {
+			System.out.print(root.data + " ");
+		}
+		printLeafNodes(root.right);
+	}
+
+	private static void printRightNodes(BSTNode root) {
+
+		if (root == null) {
+			return;
+		}
+		
+		if (root.right != null) {
+			printRightNodes(root.right);
+			System.out.print(root.data + " ");
+		} else if (root.left != null) {
+			printRightNodes(root.left);
+			System.out.print(root.data + " ");
+		}
+	}
+	
+	/*
+	 * sum tree:
+	 * 
+	 *     2
+	 *     /\
+	 *    4   7
+	 *   /   /  \
+	 *  -6  -2  8
+	 *  
+	 *      |
+	 *      | 
+	 *      v
+	 *	   
+	 *
+	 *         11(-6 +7+6)
+	 *          /\
+   (-6 + 0)  -6   6(-2 + 8)
+	 *       /   /  \
+	 *      0   0    0    
+	 *    
+	 *    
+	 *    make children as 0;
+	 */
+	private static int sum(BSTNode root) {
+		if (root == null) {
+			return 0; // setting children value as 0;
+		}
+		
+		int lSum = sum(root.left);
+		int rSum = sum(root.right);
+		
+		//induction step : what we do
+		int temp = root.data;
+	    root.data = lSum + rSum;
+	    
+		
+		return temp + root.data;	
+	}
+	
+	/*
+	 * diameter of a binary tree may or may not be BST
+	 */
+	private static int diameter(BSTNode root, int result) {
+		if (root == null) {
+			return 0;
+		}
+		
+		int lDiameter = diameter(root.left, result);
+		int rDiameter = diameter(root.right, result);
+		
+		int temp = Math.max(lDiameter, rDiameter) + 1;
+		int answer = Math.max(temp, 1 + lDiameter + rDiameter);
+		
+		result = Math.max(result, answer);
+		
+		if (diameterValue < result) {
+			diameterValue = result;
+		}
+		
+		return temp;
+		
+	}
+	
+
+		static int diameter(BSTNode root) {
+			// base case if tree is empty
+			if (root == null)
+				return 0;
+
+			// get the height of left and right sub-trees
+			int lheight = height(root.left);
+			int rheight = height(root.right);
+
+			// get the diameter of left and right sub-trees
+			int ldiameter = diameter(root.left);
+			int rdiameter = diameter(root.right);
+
+			/* Return max of following three
+			1) Diameter of left subtree
+			2) Diameter of right subtree
+			3) Height of left subtree + height of right subtree + 1
+			*/
+			
+			int result =  Math.max(lheight + rheight + 1,
+							Math.max(ldiameter, rdiameter));
+			return result;
+		}
+
+		static int diameterTree(BSTNode root) { return diameter(root); }
+
+
+		/*
+		 * Maximum Sum Path
+		 */
+		static int maximumPathSum(BSTNode root, int result) {
+			if (root == null) {
+				return 0;
+			}
+			
+			int lSum = maximumPathSum(root.left, result);
+			int rSum = maximumPathSum(root.right, result);
+			
+			// in case, sum doesn't end at the node
+			int temp = Math.max(Math.max(lSum, rSum) + root.data, root.data);
+		
+			// in case, sum ends at the node
+			int answer = Math.max(temp, lSum + rSum + root.data);
+			result = Math.max(result, answer);
+			
+			if (finalValue < result) {
+				finalValue = result;
+				System.out.print(root.data + " ");
+			}
+			
+			return temp;
+		}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ticket-app&apos; to &apos;kafka-project&apos;" description="Rename resource &apos;ticket-app&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/ticket-app" name="kafka-project" stamp="1616691905056" updateReferences="true"/>
+</session>

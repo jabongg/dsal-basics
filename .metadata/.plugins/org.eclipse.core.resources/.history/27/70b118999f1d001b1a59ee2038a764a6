@@ -1,0 +1,31 @@
+package com.learning.java.array;
+
+public class ReverseInteger {
+
+	  public static int reverse(int x) {
+	        StringBuilder reverseNum = new StringBuilder();
+	        // handle the sign
+	        
+	        if (x < 0) {
+	            reverseNum.append("-");
+	            x = (-1) * x; // taking modulus of the number
+	        }
+	        
+	        while (x > 0 ) {
+	            reverseNum.append(x % 10);
+	            x = x / 10;
+	        }
+	        
+
+	        String reversed = reverseNum.toString();
+	        x = Integer.parseInt(reversed);
+	        return x;
+	    }
+	  
+	  //main method
+	  public static void main(String[] args) {
+		int x = 123;
+		int result = reverse(x);
+		System.out.println(result);
+	}
+}

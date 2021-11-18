@@ -1,0 +1,9 @@
+package com.learning.dsal.dp;
+
+public class Knapsack_01 {
+
+	public static void main(String[] args) {
+		int[] weight = {1, 3, 4, 5};
+		int[] value = {1, 4, 5, 7};
+	}
+}

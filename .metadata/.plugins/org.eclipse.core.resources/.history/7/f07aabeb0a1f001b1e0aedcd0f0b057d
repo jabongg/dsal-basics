@@ -1,0 +1,14 @@
+package com.learning.java.linkedlist;
+
+public class ListDriver {
+
+	public static void main(String[] args) {
+		
+		// start with empty list
+		
+		LinkedNode l1  = new LinkedNode();
+		LinkedNode l2 = new LinkedNode();
+		
+		
+	}
+}

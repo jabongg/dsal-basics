@@ -1,0 +1,23 @@
+package com.learning.dsal.slidingwindow;
+
+/**
+ * Problem statement : Given an array of integers A[] and a sliding window K.
+ * Output : return an array of highest element from each subarray.
+ * @author User
+ *
+ */
+public class HighestElementSubarray {
+
+	public static void main(String[] args) {
+		int[] A = {1, 3, -1, -3, 5, 3, 6, 7};
+		int k = 3;// slidingWindow
+		int[] output = findHighestElementSubArray(A, k);
+		
+		for (int i = 0; i < output.length; i++)
+			System.out.println(output[i]);
+	}
+
+	private static int[] findHighestElementSubArray(int[] a, int k) {
+		return null;
+	}
+}

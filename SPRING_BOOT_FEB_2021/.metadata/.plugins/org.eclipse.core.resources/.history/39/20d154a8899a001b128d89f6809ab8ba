@@ -1,0 +1,100 @@
+package com.learning.site.codeforces;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+/*
+ * 1
+4
+..*.
+....
+*...
+....
+2
+*.
+.*
+2
+.*
+.*
+3
+*.*
+...
+...
+5
+.....
+..*..
+.....
+.*...
+.....
+4
+....
+....
+*...
+*...
+ * @author User
+ *
+ */
+public class AlmostRectangle {
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		int t = scan.nextInt();
+
+		while (t-- > 0) {
+			int n = scan.nextInt();
+			char[][] matrix = new char[n][n];
+
+			for (int i = 0; i < n; i++) {
+				String line = scan.next();
+				for (int j = 0; j < n; j++) {
+					matrix[i][j] = line.charAt(j);
+				}
+			}
+			
+			printAlmostRectangle(matrix);
+		}
+	}
+
+	class Point {
+		int x;
+		int y;
+		public Point(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		
+	}
+	private static void printAlmostRectangle(char[][] matrix) {
+		
+		findStarsIndices(matrix);
+		
+		printMatrix(matrix);
+	}
+	
+	
+	private static void findStarsIndices(char[][] A) {
+
+		List<Point> points = new ArrayList<>();
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < A.length; j++) {
+				if (A[i][j] == '*') {
+					points.add(new AlmostRectangle().new Point(i, j));
+				}
+			}
+		}
+		
+	}
+
+
+	private static void printMatrix(char[][] A) {
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < A.length; j++) {
+				System.out.print(A[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	
+}

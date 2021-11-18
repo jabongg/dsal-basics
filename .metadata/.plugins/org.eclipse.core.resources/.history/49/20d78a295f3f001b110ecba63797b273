@@ -1,0 +1,11 @@
+package com.learning.java.stack.recursion;
+
+public class GrammarGenerate {
+
+	public static void main(String[] args) {
+		int n = 4;
+		int k = 6;
+		
+		int digit = generateGrammar(n, k);
+	}
+}

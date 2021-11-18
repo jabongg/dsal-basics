@@ -1,0 +1,47 @@
+package com.learning.dsal.dp;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class SequencePatternMatching {
+
+	public static void main(String[] args) {
+		String pattern = "XAY";
+		String sampleStr = "ADXCPAY";
+		
+		boolean isPatternPresent = isPatternPresent(sampleStr, pattern);
+		System.out.println(isPatternPresent);
+	}
+
+	private static boolean isPatternPresent(String sampleStr, String pattern) {
+		
+		Map<Character, Integer> characterMap = new HashMap<>();
+		for (int i = 0; i < sampleStr.length(); i++) {
+			characterMap.put(sampleStr.charAt(i), i);
+		}
+		
+		// key is present in map and index stored in the map for that character is less than the index of 
+		// character in the map, then print false
+		// else continue... in the end if everything is fine, return true;
+		
+		int lastIndex = -1;
+		
+		for (int i = 0; i < pattern.length(); i++) {
+			
+			if (null == characterMap.get(pattern.charAt(i))) {
+				return false;
+			}
+			
+			int currentIndex = characterMap.get(pattern.charAt(i));
+			if (characterMap.containsKey(pattern.charAt(i))) {
+				//
+				if (currentIndex < lastIndex ) {
+					return false;
+				}
+				lastIndex = currentIndex;
+				
+			}
+		}
+		return true;	
+	}
+}

@@ -1,0 +1,32 @@
+package com.learning.java.stack;
+
+import java.util.Stack;
+
+public class MinElementStack {
+	public static void main(String[] args) {
+		Stack<Integer> stack = new Stack<>();
+		stack.push(13);
+		stack.push(5);
+		stack.push(47);
+		stack.push(3);
+		stack.push(16);
+		stack.push(12);
+		stack.push(34);
+		
+		
+		System.out.println(stack.size());
+		int minimumElement = minimumElementInStack(stack);
+		System.out.println(minimumElement);
+	}
+	
+	public static int minimumElementInStack(Stack<Integer> stack) {
+		int minimumElement = Integer.MAX_VALUE;
+		while (!stack.isEmpty()) {
+			if (stack.peek() < minimumElement) {
+				minimumElement = stack.peek();
+			}
+			stack.pop();
+		}
+		return minimumElement;
+	}
+}

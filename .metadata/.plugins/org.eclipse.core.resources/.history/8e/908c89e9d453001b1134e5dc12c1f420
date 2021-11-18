@@ -1,0 +1,25 @@
+package com.learning.dsal.dp;
+
+public class LongestCommonSubsequence {
+
+	public static void main(String[] args) {
+		String x = "abcdgh";
+		String y = "abedfhr";
+		
+		lcsequence(x, y);
+	}
+
+	private static void lcsequence(String x, String y) {
+
+		int n = x.length();
+		int m = y.length();
+		char[] xArray = x.toCharArray();
+		char[] yArray = y.toCharArray();
+		int lcsLength = lcs(x, y, xArray, yArray);
+		
+	}
+
+	private static int lcs(String x, String y, char[] xArray, char[] yArray) {
+		return 0;
+	}
+}

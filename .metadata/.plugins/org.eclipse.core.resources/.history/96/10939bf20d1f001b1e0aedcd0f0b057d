@@ -1,0 +1,23 @@
+package com.learning.java.linkedlist;
+
+public class List {
+
+	public static LinkedNode insert(LinkedNode l1, int data) {
+		
+		return null;
+	}
+	
+	// add two numbers represented as linked list
+    public LinkedNode addTwoNumbers(LinkedNode l1, LinkedNode l2) {
+		return l2;
+    	
+    }
+    
+    public void printList(LinkedNode head) {
+    	while (head != null) {
+    		System.out.print(head.data);
+    		System.out.print(" ");
+    		head = head.next;
+    	}
+    }
+}

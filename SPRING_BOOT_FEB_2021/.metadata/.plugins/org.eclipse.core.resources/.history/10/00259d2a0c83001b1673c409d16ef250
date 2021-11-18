@@ -1,0 +1,23 @@
+package com.learning.site.ctci;
+
+/**
+ * https://github.com/careercup/CtCI-6th-Edition/tree/master/Java Given two
+ * 
+ * strings, write a method to decide if one is a permutation of the other
+ * 
+ * @author User
+ *
+ */
+public class TwoPermutatedStrings {
+	public static void main(String[] args) {
+		String str1 = "care";
+		String str2 = "acre";
+		
+		checkIfTwoStringsArePermutations(str1, str2);
+	}
+
+	private static void checkIfTwoStringsArePermutations(String str1, String str2) {
+		
+	}
+
+}

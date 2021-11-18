@@ -1,0 +1,49 @@
+package com.learning.dsal.heap;
+
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+public class MinDistanceBtwnNodesBST {
+
+    public int minDiffInBST(TreeNode root) {
+        
+        Queue < Integer > res = new PriorityQueue<>();
+        int min = Integer.MAX_VALUE;
+        inorder(root, res, min);
+
+        int min1 = res.poll();
+        int min2 = res.poll();
+        
+        
+        return Math.abs(min1 - min2);
+    }
+
+     public void inorder(TreeNode root, Queue<Integer> res, int min) {
+        if (root == null) {
+            return;
+        }
+        if (root.val < min) {
+            min = root.val;
+        }
+        inorder(root.left, res, min);
+        if (res.size() > 2) {
+            res.poll();
+        }
+        res.add(root.val);
+        inorder(root.right, res, min);
+    } 
+}
+
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode() {}
+    TreeNode(int val) { this.val = val; }
+    TreeNode(int val, TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = left;
+        this.right = right;
+    }
+}

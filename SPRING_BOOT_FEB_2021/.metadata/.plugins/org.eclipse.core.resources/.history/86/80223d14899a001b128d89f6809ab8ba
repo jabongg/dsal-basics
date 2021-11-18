@@ -1,0 +1,92 @@
+package com.learning.site.codeforces;
+
+import java.util.Scanner;
+
+import com.example.datastructures.PrintUtil;
+/*
+ * 1
+4
+..*.
+....
+*...
+....
+2
+*.
+.*
+2
+.*
+.*
+3
+*.*
+...
+...
+5
+.....
+..*..
+.....
+.*...
+.....
+4
+....
+....
+*...
+*...
+ * @author User
+ *
+ */
+public class AlmostRectangle {
+	public static void main(String[] args) {
+
+		Scanner scan = new Scanner(System.in);
+		int t = scan.nextInt();
+
+		while (t-- > 0) {
+			int n = scan.nextInt();
+			char[][] matrix = new char[n][n];
+
+			for (int i = 0; i < n; i++) {
+				String line = scan.next();
+				for (int j = 0; j < n; j++) {
+					matrix[i][j] = line.charAt(j);
+				}
+			}
+			
+			printAlmostRectangle(matrix);
+		}
+	}
+
+	class Point {
+		int x;
+		int y;
+		public Pair(int x, int y) {
+			this.x = x;
+			this.y = y;
+		}
+		
+		
+	}
+	private static void printAlmostRectangle(char[][] matrix) {
+		
+		findStarsIndices(matrix);
+		
+		printMatrix(matrix);
+	}
+	
+	
+	private static void findStarsIndices(char[][] matrix) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	private static void printMatrix(char[][] A) {
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < A.length; j++) {
+				System.out.print(A[i][j] + " ");
+			}
+			System.out.println();
+		}
+	}
+	
+	
+}

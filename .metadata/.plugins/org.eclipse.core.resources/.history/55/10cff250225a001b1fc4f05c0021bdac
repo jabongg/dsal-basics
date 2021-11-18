@@ -1,0 +1,21 @@
+package com.learning.dsal.heap;
+
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+public class MinHeap {
+	public static void main(String[] args) {
+		// min-heap
+		int[] A = { 7, 10, 4, 3, 20, 15 };
+		int k = 3;
+
+		// find the 3rd largest element i.e. 10
+		System.out.println(k + "th largest element : " + minHeap(A));
+	}
+
+	private static int minHeap(int[] a) {
+		Queue<Integer> heap = new PriorityQueue<>();
+		return 0;
+	}
+
+}

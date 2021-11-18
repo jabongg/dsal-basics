@@ -1,0 +1,8 @@
+package com.learning.java.collections;
+
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+		
+	}
+}

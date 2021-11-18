@@ -1,0 +1,14 @@
+package com.learning.java.linkedlist;
+
+public class List {
+
+	public static LinkedNode insert(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+    public LinkedNode addTwoNumbers(LinkedNode l1, LinkedNode l2) {
+		return l2;
+    	
+    }
+}

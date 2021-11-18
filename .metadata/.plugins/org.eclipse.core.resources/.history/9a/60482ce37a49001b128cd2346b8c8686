@@ -1,0 +1,14 @@
+package com.learning.dsal.slidingwindow;
+
+/**
+ * Problem statement : Given an array of integers A[] and a sliding window K.
+ * Output : return an array of highest element from each subarray.
+ * @author User
+ *
+ */
+public class HighestElementSubarray {
+
+	public static void main(String[] args) {
+		
+	}
+}

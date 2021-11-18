@@ -1,0 +1,12 @@
+package com.learning.java.collections;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class HashMapDemo {
+
+	public static void main(String[] args) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		
+	}
+}

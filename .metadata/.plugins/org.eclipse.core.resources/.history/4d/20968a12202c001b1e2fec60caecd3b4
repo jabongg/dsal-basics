@@ -1,0 +1,52 @@
+package com.learning.dsal.dp;
+
+/**
+ * Subset Sum Problem | DP-25
+Last Updated: 09-11-2020
+ 
+Given a set of non-negative integers, and a value sum, determine if there is a subset of the given set with sum equal to given sum. 
+
+Example: 
+
+Input: set[] = {3, 34, 4, 12, 5, 2}, sum = 9
+Output: True  
+There is a subset (4, 5) with sum 9.
+
+Input: set[] = {3, 34, 4, 12, 5, 2}, sum = 30
+Output: False
+There is no subset that add up to 30.
+
+
+ * @author User
+ *
+ */
+public class SubsetSum {
+
+	public static void main(String[] args) {
+		int[] set = {3, 34, 4, 12, 5, 2};
+		int sum = 9;
+		
+		boolean subsetExists = subsetWithSumExists(set, sum);
+	}
+
+	private static  boolean subsetWithSumExists(int[] set, int sum) {
+		boolean[][] t = new boolean[set.length + 1][sum + 1];
+		
+		for (int i = 0; i <= set.length; i++) {
+			for (int j = 0; j <= sum; j++) {
+				if (i == 0) {
+					t[i][j] = false;
+				}
+				if (j == 0) {
+					t[i][j] = true;
+				}
+			}
+
+		}
+		
+
+		return t[set.length][sum];
+		
+	}
+	
+}

@@ -1,0 +1,35 @@
+package com.learning.dsal.heap;
+
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+public class KthSmallestElement {
+
+	public static void main(String[] args) {
+		// min-heap
+]
+		int[] A = {7, 10, 4, 3, 20, 15};
+		int k = 3;
+		System.out.println(k + "th largest element : " + findKthLargestElement(heap, k));
+	}
+
+	private static int findKthLargestElement(int[] A, int k) {
+
+		Queue<Integer> heap = new PriorityQueue<Integer>();
+		heap.add(7);
+		heap.add(10);
+		heap.add(4);
+		heap.add(3);
+		heap.add(20);
+		heap.add(15);
+		
+		System.out.println(heap.peek());
+		
+		for (Integer element : heap) {
+			System.out.print(element +" ");
+		} 
+			
+		
+		return 0;
+	}
+}

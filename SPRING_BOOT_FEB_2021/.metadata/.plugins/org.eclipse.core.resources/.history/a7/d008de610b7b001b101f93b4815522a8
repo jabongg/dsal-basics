@@ -1,0 +1,11 @@
+package com.learning.java.collections;
+
+public class Key {
+
+	String key;
+
+	public Key(String key) {
+		this.key = key;
+	}
+	
+}

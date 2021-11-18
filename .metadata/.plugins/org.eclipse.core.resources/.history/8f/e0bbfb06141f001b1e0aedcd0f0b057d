@@ -1,0 +1,49 @@
+package com.learning.java.linkedlist;
+
+public class List {
+
+	public static LinkedNode insert(LinkedNode head, int data) {
+		LinkedNode newNode = new LinkedNode(data);
+		
+		if (head == null) {
+			head = newNode;
+		} else {
+			
+			LinkedNode curr = head;
+			while (curr.next != null) {
+				curr = curr.next;
+			}
+			
+			curr.next = newNode;
+		}
+		
+		// append at the end of the list		
+		
+		return head;
+	}
+	
+	// add two numbers represented as linked list
+    public static LinkedNode addTwoNumbers(LinkedNode l1, LinkedNode l2) {
+    	LinkedNode dummyHead = new LinkedNode(0);
+    	LinkedNode l3 = dummyHead;
+    	
+    	int carry = 0;
+    	
+    	while (l1 != null || l2 != null) {
+    		int l1_value = (l1 != null) ? l1.data : 0;
+    		int l2_value = (l2 != null) ? l2.data : 0;
+
+    	}
+    	
+		return l2;
+    	
+    }
+    
+    static public void print(LinkedNode head) {
+    	while (head != null) {
+    		System.out.print(head.data);
+    		System.out.print(" ");
+    		head = head.next;
+    	}
+    }
+}
